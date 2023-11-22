@@ -1,0 +1,114 @@
+class Account:
+    def __init__(self, account_number, name, balance, pin):
+        self.account_number = account_number
+        self.name = name
+        self.balance = balance
+        self.pin = pin
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            print(f"Deposit accepted. Your new balance is ₹{self.balance}")
+        else:
+            print("Invalid deposit amount. Please enter a positive value.")
+
+    def withdraw(self, amount):
+        if amount > 0 and self.balance >= amount:
+            self.balance -= amount
+            print(f"Withdrawal successful. Your new balance is ₹{self.balance}")
+        else:
+            if amount <= 0:
+                print("Invalid withdrawal amount. Please enter a positive value.")
+            else:
+                print("Insufficient funds. Withdrawal amount cannot exceed your balance.")
+
+    def check_balance(self):
+        print(f"Your current account balance is ₹{self.balance}")
+
+    def view_details(self):
+        print("Account Details:")
+        print(f"Account Number: {self.account_number}")
+        print(f"Account Holder Name: {self.name}")
+        print(f"Account Balance: ₹{self.balance}")
+
+
+accounts = {
+    1234567890: Account(1234567890, "Noel", 5000, 1243),
+    9876543210: Account(9876543210, "Joel", 2000, 9876),
+    2468101214: Account(2468101214, "Raphael", 4000, 2468),
+    1357911315: Account(1357911315, "Daniel", 3000, 1357)
+}
+
+
+def create_account():
+    account_number = int(input("\nEnter a new account number: "))
+    if account_number not in accounts:
+        name = input("Enter your name: ")
+        balance = float(input("Enter your initial deposit: ₹"))
+        pin = int(input("Set your PIN: "))
+
+        new_account = Account(account_number, name, balance, pin)
+        accounts[account_number] = new_account
+        print("Account created successfully.")
+    else:
+        print("Account number already exists. Please try again with a different number.")
+
+
+def login():
+    account_number = int(input("\nEnter your account number: "))
+    if account_number in accounts:
+        pin = int(input("Enter your PIN: "))
+        if accounts[account_number].pin == pin:
+            print(f"\nWelcome back {accounts[account_number].name}")
+            manage_account(accounts[account_number])
+        else:
+            print("Invalid PIN. Please try again.")
+    else:
+        print("Invalid account number. Please try again.")
+
+
+def manage_account(account):
+    while True:
+        print("\nMain Menu:")
+        print("1. Check Balance")
+        print("2. Deposit Funds")
+        print("3. Withdraw Funds")
+        print("4. View Account Details")
+        print("5. Return to Main Menu")
+
+        choice = int(input("Enter your choice: "))
+
+        if choice == 1:
+            account.check_balance()
+        elif choice == 2:
+            amount = float(input("Enter the amount you want to deposit: ₹"))
+            account.deposit(amount)
+        elif choice == 3:
+            amount = float(input("Enter the amount you want to withdraw: ₹"))
+            account.withdraw(amount)
+        elif choice == 4:
+            account.view_details()
+        elif choice == 5:
+            print(" ")
+            break
+        else:
+            print("Invalid choice. Please enter a valid option.")
+
+
+while True:
+    print("\nWelcome to our Banking System:")
+    print("1. Create Account")
+    print("2. Login")
+    print("3. Exit")
+
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+        create_account()
+    elif choice == 2:
+        login()
+    elif choice == 3:
+        print("Thank you for using our banking system.Have a nice day!")
+        break
+    else:
+        print("Invalid choice. Please enter a valid option.")
