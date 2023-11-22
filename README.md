@@ -1,7 +1,7 @@
 # Basic banking system simulator
 
 
-Link to view my Video presentation on Google Drive:
+Link to view my Video presentation on Google Drive: https://drive.google.com/file/d/1dCNlP0WtSivbhpgzbfZhEJMQXY4eCTHN/view?usp=drive_link
 
 ## Introduction:
 
