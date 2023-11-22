@@ -1,4 +1,4 @@
-# Basic-banking-system-simulator
+# Basic banking system simulator
 
 
 Link to view my Video presentation on Google Drive:
@@ -10,11 +10,11 @@ This is a simple banking simulator which helps the user to perform basic banking
 ## Available functions:
 
 Account creation
-Existing user login
-Amount depositing
-Amount withdrawal
-Check account balance
-View account details
+<br>Existing user login
+<br>Amount depositing
+<br>Amount withdrawal
+<br>Check account balance
+<br>View account details
 
 ## Conclusion:
 
